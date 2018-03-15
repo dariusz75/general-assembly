@@ -1,0 +1,128 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 var friends = [\
+  \{name: 'Adam', age: 20\},\
+  \{name: 'Mark', age: 30\},\
+  \{name: 'John', age: 50\},\
+  \{name: 'Jack', age: 60\}\
+];\
+\
+\
+//Ex 1\
+friends.forEach(function(friend) \{\
+ \
+  if(friend.age > 40) \{\
+    console.log(friend.name + ' is ' + 'over 40');\
+  \}\
+  \
+\});\
+\
+\
+//Ex 2\
+for(var i = 0; i < friends.length; i += 2) \{ \
+    friends[i].licence = true;\
+  \
+\}\
+\
+console.log(friends);\
+\
+//Ex 3\
+friends.forEach(function(friend) \{\
+ \
+  if(friend.licence === true) \{\
+    console.log(friend.name + ' has a driving licence');\
+  \}\
+  \
+\});\
+\
+/*\
+var turtles = [\
+  \{name: 'Leonardo', weapon: 'Twin Katana'\},\
+  \{name: 'Donatello', weapon: 'Bo'\},\
+  \{name: 'Raphael', weapon: 'Sai'\},\
+  \{name: 'Michaelangelo', weapon: 'Nunchaku'\},\
+]\
+*/\
+\
+//Ex 4\
+function printWeapon(name) \{\
+  switch(name) \{\
+    case 'Leonardo':\
+        console.log('Twin Katana');\
+        break;\
+   case 'Donatello':\
+        console.log('Bo');\
+        break;\
+   case 'Raphael':\
+        console.log('Sai');\
+        break;\
+   case 'Michaelangelo':\
+        console.log('Nunchaku');\
+        break;\
+\}\
+\}\
+\
+printWeapon('Donatello');\
+\
+\
+\
+//Additional Ex 1\
+function toFahrenheit(celsius) \{\
+  var fahrenheit = celsius * (9/5+32);\
+  return fahrenheit\
+\}\
+\
+console.log(toFahrenheit(2));\
+\
+\
+//Additional Ex 2\
+function fibonacciNumber(numberGiven) \{\
+    var a = -1; \
+    var b = 1; \
+    var fibonacci;\
+    var fibonacciCollection = [];\
+  \
+    for(var i = 1; i <= numberGiven; i++) \{\
+        fibonacci = a + b;\
+        a = b;\
+        b = fibonacci;\
+        fibonacciCollection.push(fibonacci);\
+    \}\
+    return fibonacciCollection;\
+\}\
+\
+console.log(fibonacciNumber(100));\
+\
+\
+//Additional Ex 3\
+function palidrome(word) \{\
+  var wordToArray = word.split('');\
+  var wordToArrayReversed = word.split('').reverse();\
+  var palidrome;\
+  \
+  for(var i = 0; i < wordToArray.length; i++) \{\
+     \
+    if (wordToArray[i] === wordToArrayReversed[i]) \{\
+      palidrome = true;\
+    \}\
+    \
+  \}\
+  \
+  if(palidrome)\{\
+    return  'The word ' + word + ' is a palidrome';\
+  \} \
+  \
+\}\
+\
+console.log(palidrome('kayak'));\
+\
+\
+\
+\
+\
+link to working examples - {\field{\*\fldinst{HYPERLINK "https://jsbin.com/wucinin/edit?js,console"}}{\fldrslt https://jsbin.com/wucinin/edit?js,console}}}
