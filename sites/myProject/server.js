@@ -20,41 +20,60 @@ promise.then(function(db) {
   console.log('CONNECTION ERROR', err);
 });
 
-var cars = [
-  {
-    _id: 0,
-    name: 'Ferrari'
-  },
-  {
-    _id: 1,
-    name: 'Mini'
-  },
-  {
-    _id: 2,
-    name: 'Tesla'
+//Mongo DB Schema
+var Schema = mongoose.Schema;
+
+var CarSchema = new Schema({
+  make:  String,
+  bhp: Number,
+  year: Number
+});
+
+//Mongo DB Model
+var Car = mongoose.model('Car', CarSchema);
+
+
+app.get('/cars/:id?', function(req, res) {
+  var queryObj = {};
+  if (req.params.id) {
+    queryObj._id = req.params.id;
   }
-];
+  Car.find(queryObj).exec(function(err, cars){
+    if (err) return res.status(500).send(err);
+    res.status(200).json(cars);
+  });
+});
 
 
 app.post('/cars', function(req, res) {
   console.log(req.body);
-  cars.push(req.body);
-  res.sendStatus(200);
+  var carData = req.body;
+  var newCar = new Car(carData);
+  newCar.save(function (err, car) {
+    if (err) return res.status(500).send(err);
+    res.sendStatus(201);
+  });
 });
+
 
 app.delete('/cars/:id', function(req, res) {
-  console.log('car to be deleted', req.params.id);
-  var index = cars.findIndex(function(car) {
-    return req.params.id === car._id;
+  console.log('Car to be deleted: ', req.params.id);
+  deletableCarId = req.params.id;
+  Car.remove({ _id : deletableCarId }, function(err, deletedCar) {
+    if (err) return res.Status(500).send(err);
+    res.sendStatus(201);
   });
-  var deletedCar = cars.splice(index, 1);
-  res.status(200).json(cars);
 });
 
-app.get('/cars', function(req, res) {
-  res.status(200).json(cars);
-});
 
+app.put('/cars/:id', function(req, res) {
+  updatableCarId = req.params.id;
+  Car.update({ _id : updatableCarId }, req.body, function(err, raw) {
+    if (err) return handleError(err);
+    console.log('The row response from Mongo was ', raw);
+    return res.sendStatus(200);
+  });
+});
 
 
 app.listen(3000, function(){
