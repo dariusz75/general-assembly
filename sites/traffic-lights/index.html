@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic lights</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+  <div class="controls">
+
+    <!-- Manual Light Controls -->
+    <button id="stop_light_control" class="btn btn-danger">Red</button>
+    <button id="caution_light_control" class="btn btn-warning">Amber</button>
+    <button id="go_light_control" class="btn btn-success">Green</button>
+
+  <!-- Automatic Light Controls -->
+  <!-- <button id="stop_control" class="btn btn-danger">Stop</button>
+  <button id="go_control" class="btn btn-success">Go</button> -->
+
+  </div>
+
+
+
+  <div class="backboard">
+    <div class="inner">
+      <div class="light stop-light"></div>
+      <div class="light caution-light"></div>
+      <div class="light go-light"></div>
+    </div>
+  </div>
+  <div class="post"></div>
+
+  <script src="./scripts/main.js"></script>
+</body>
+
+</html>
