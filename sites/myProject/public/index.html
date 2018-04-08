@@ -8,15 +8,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>IPA app</title>
   </head>
-  <body>
-
-
-      <div class="container">
-        <h1>Home Page</h1>
+<body>
+  <div class="container">
+    <h1>Home Page</h1>
+    <h2>Cars count: <span class="car-count">0</span></h2>
+  </div>
+  <div class="container">
+    <div id="ajax-content" class="row"></div>
+    <hr>
+    <div class="row">
+      <form id="car-form">
+        <h3 class="form-title">Add a car</h3>
+      <div class="form-group">
+        <input type="text" class="form-control" id="make" placeholder="Make">
       </div>
-      <div class="container">
-        <div id="ajax-content" class="row"></div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="bhp" placeholder="BHP">
       </div>
+      <div class="form-group">
+        <input type="number" class="form-control" id="year" placeholder="Year">
+      </div>
+      <button type="submit" class="submit-btn btn btn-primary">Submit</button>
+    </form>
+    </div>
+  </div>
 
 
 <script id="profile-template" type="text/x-handlebars-template">
