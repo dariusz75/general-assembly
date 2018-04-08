@@ -3,7 +3,7 @@ var source = document.getElementById("profile-template").innerHTML;
 var template = Handlebars.compile(source);
 
 $.ajax({
-  url: '//localhost:3000/cars'
+  url: '//localhost:3000/cars/'
 }).done(function(response){
   response.forEach(function(respond){
   var HTML = template(respond);

@@ -61,7 +61,7 @@ app.delete('/cars/:id', function(req, res) {
   deletableCarId = req.params.id;
   Car.remove({ _id : deletableCarId }, function(err, deletedCar) {
     if (err) return res.Status(500).send(err);
-    res.sendStatus(201);
+    res.sendStatus(201).send(car);
   });
 });
 

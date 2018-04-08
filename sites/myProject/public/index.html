@@ -14,15 +14,27 @@
       <div class="container">
         <h1>Home Page</h1>
       </div>
-      <div class="container" id="ajax-content"></div>
+      <div class="container">
+        <div id="ajax-content" class="row"></div>
+      </div>
 
 
 <script id="profile-template" type="text/x-handlebars-template">
-   <h3>Make: {{make}}</h3>
-   <h3>BHP: {{bhp}}</h3>
-   <h3>Year: {{year}} </h3>
-</script>
 
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Car details</h4>
+          <h5>Make: {{make}}</h5>
+          <h5>BHP: {{bhp}}</h5>
+          <h5>Year: {{year}}</h5>
+          <button type="button" class="btn btn-warning">Edit</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+
+</script>
 
 
 
