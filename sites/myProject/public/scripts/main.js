@@ -18,7 +18,7 @@ var $activeButtonClass = 'active';
 //handlebars templating
 var source = document.getElementById("profile-template").innerHTML;
 var templateFn = Handlebars.compile(source);
-//var toPlace = document.getElementById("ajax-content");
+var toPlace = document.getElementById("ajax-content");
 
 var _cars = [];
 
@@ -59,10 +59,14 @@ function handleAjaxFail (err) {
 //GET
 $.ajax({
   url: '//localhost:3000/cars/'
-})
-.done(function(cars){
-  _cars = cars;
-  updateUI();
+}).done(function(response){
+  response.forEach(function(respond){
+  var HTML = templateFn(respond);
+  var listHTML = toPlace.innerHTML; //get current html
+  var newHTML = listHTML + HTML; //edit what ive copied
+  toPlace.innerHTML = newHTML; //write new stuff
+});
+  console.log(response);
 })
 .fail(handleAjaxFail);
 
