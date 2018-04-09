@@ -44,8 +44,8 @@ function updateCar(car, data) {
 }
 
 function updateUI() {
-  $carsList.html = '';
-  $carCountIndicator.text = _cars.length;
+  $carsList.innerHTML = '';
+  $carCountIndicator.textContent = _cars.length;
   _cars.forEach(function(car){
     $carsList.innerHTML += templateFn(car);
   });
