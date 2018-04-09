@@ -2,8 +2,8 @@
 var updating = false;
 var carToBeUpdeted = null;
 
-var $carsList = ("ajax-content");
-var $carCountIndicator = ("car-count");
+var $carsList = ("#ajax-content");
+var $carCountIndicator = ("#car-count");
 var $formTitle = $('.form-title');
 var $originalFormTitle = $('.form-title').text();
 var $submitButtotn = $('.submit-btn');
@@ -16,16 +16,16 @@ var $yearInput = $form.find('#year');
 var $activeButtonClass = 'active';
 
 //handlebars templating
-var toPlace = document.getElementById("ajax-content");
 var source = document.getElementById("profile-template").innerHTML;
 var templateFn = Handlebars.compile(source);
+//var toPlace = document.getElementById("ajax-content");
 
 var _cars = [];
 
 
 
 
-function resetiForm() {
+function resetForm() {
   $form.find('input[type="text"], input[type="number"]').val('');
 }
 
@@ -44,7 +44,7 @@ function updateCar(car, data) {
 }
 
 function updateUI() {
-  $carsList.html='';
+  $carsList.html = '';
   $carCountIndicator.text = _cars.length;
   _cars.forEach(function(car){
     $carsList.innerHTML += templateFn(car);
@@ -68,7 +68,41 @@ $.ajax({
 
 $form.on('submit.addOrUpdate', function(e){
   e.preventDefault();
-  console.log('bingo');
+  var bhpNumber = parseInt($bhpInput.val(), 10);
+  if (isNaN(bhpNumber)) {
+    $bhpInput.val('');
+    alert('BHP must be an integer!');
+    return;
+  }
+  var data = {
+    make: $makeInput.val(),
+    bhp: bhpNumber,
+    year: $yearInput.val()
+  };
+  console.log(data);
+  var callOptions = {
+    url: '//localhost:3000/cars/',
+    method: 'POST',
+    data: data
+  };
+  console.log(callOptions);
+  if (updating) {
+    callOptions.method = 'PUT';
+    callOptions.url = '//localhost:3000/cars/' + carToBeUpdeted._id;
+  }
+
+  $.ajax(callOptions)
+    .done(function(car) {
+      console.log(car);
+      if (updating) {
+        updateCar(car, data);
+        //exitUpdating();
+      } else {
+          _cars.push(car);
+        }
+        updateUI();
+    })
+    .fail(handleAjaxFail);
 })
 
 
