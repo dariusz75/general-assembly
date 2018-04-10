@@ -51,6 +51,7 @@ function updateUI() {
   });
 }
 
+
 function handleAjaxFail (err) {
   console.log(err.message);
   alert('Ajax failed!');
@@ -107,6 +108,8 @@ $form.on('submit.addOrUpdate', function(e){
         updateUI();
     })
     .fail(handleAjaxFail);
+
+    //location.reload();
 })
 
 
