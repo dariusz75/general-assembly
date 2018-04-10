@@ -1,11 +1,13 @@
 
+$(function(){
+
 var updating = false;
 var carToBeUpdeted = null;
 
 var $carsList = ("#ajax-content");
 var $carCountIndicator = ("#car-count");
-var $formTitle = $('.form-title');
-var $originalFormTitle = $('.form-title').text();
+var $formTitle = $('#form-title');
+var $originalFormTitle = $('#form-title').text();
 var $submitButtotn = $('.submit-btn');
 var $submitButtotnText = $('.submit-btn').text();
 var $form = $('#car-form');
@@ -16,7 +18,7 @@ var $yearInput = $form.find('#year');
 var $activeButtonClass = 'active';
 
 //handlebars templating
-var source = document.getElementById("profile-template").innerHTML;
+var source = $("#profile-template").html();
 var templateFn = Handlebars.compile(source);
 //var toPlace = document.getElementById("ajax-content");
 
@@ -44,10 +46,10 @@ function updateCar(car, data) {
 }
 
 function updateUI() {
-  $carsList.html = '';
-  $carCountIndicator.text = _cars.length;
+  $carsList.html('');
+  $carCountIndicator.text(_cars.length);
   _cars.forEach(function(car){
-    $carsList.innerHTML += templateFn(car);
+    $carsList.append(templateFn(car));
   });
 }
 
@@ -58,7 +60,7 @@ function handleAjaxFail (err) {
 
 //GET
 $.ajax({
-  url: '//localhost:3000/cars/'
+  url: '//localhost:3000/cars'
 })
 .done(function(cars){
   _cars = cars;
@@ -107,7 +109,7 @@ $form.on('submit.addOrUpdate', function(e){
 
 
 
-
+});
 
 
 //'//localhost:3000/cars'
