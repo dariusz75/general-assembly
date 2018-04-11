@@ -109,7 +109,7 @@ $form.on('submit.addOrUpdate', function(e){
     })
     .fail(handleAjaxFail);
 
-    //location.reload();
+    location.reload();
 })
 
 
