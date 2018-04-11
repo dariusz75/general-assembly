@@ -4,8 +4,8 @@ $(function(){
 var updating = false;
 var carToBeUpdeted = null;
 
-var $carsList = ("#ajax-content");
-var $carCountIndicator = ("#car-count");
+var $carsList = $("#ajax-content");
+var $carCountIndicator = $("#car-count");
 var $formTitle = $('#form-title');
 var $originalFormTitle = $('#form-title').text();
 var $submitButtotn = $('.submit-btn');
@@ -23,8 +23,6 @@ var templateFn = Handlebars.compile(source);
 //var toPlace = document.getElementById("ajax-content");
 
 var _cars = [];
-
-
 
 
 function resetForm() {
@@ -45,6 +43,8 @@ function updateCar(car, data) {
   _cars[i] = Object.assign({}, _cars[i], data);
 }
 
+
+
 function updateUI() {
   $carsList.html('');
   $carCountIndicator.text(_cars.length);
@@ -58,7 +58,8 @@ function handleAjaxFail (err) {
   alert('Ajax failed!');
 }
 
-//GET
+/*GET - initially getting cars from database, updating UI when data received or
+allerting message when the ajax call failed */
 $.ajax({
   url: '//localhost:3000/cars'
 })
