@@ -51,7 +51,7 @@ app.post('/cars', function(req, res) {
   var newCar = new Car(carData);
   newCar.save(function (err, car) {
     if (err) return res.status(500).send(err);
-    res.sendStatus(201);
+    res.status(201).send(car);
   });
 });
 
@@ -61,7 +61,7 @@ app.delete('/cars/:id', function(req, res) {
   deletableCarId = req.params.id;
   Car.remove({ _id : deletableCarId }, function(err, deletedCar) {
     if (err) return res.Status(500).send(err);
-    res.sendStatus(201).send(car);
+    res.sendStatus(204);
   });
 });
 
