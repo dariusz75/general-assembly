@@ -36,15 +36,15 @@
 
 <script id="profile-template" type="text/x-handlebars-template">
 
-    <div class="col-sm-3 mb-3">
+    <div class="col-sm-3 mb-3" data-id="{{_id}}">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Car details</h4>
           <h5>Make: {{make}}</h5>
           <h5>BHP: {{bhp}}</h5>
           <h5>Year: {{year}}</h5>
-          <button type="button" class="btn btn-warning">Edit</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-warning update" data-id="{{_id}}" >Update</button>
+          <button type="button" class="btn btn-danger delete" data-id="{{_id}}" >Delete</button>
         </div>
       </div>
     </div>
