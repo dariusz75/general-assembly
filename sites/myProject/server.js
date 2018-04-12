@@ -20,6 +20,8 @@ promise.then(function(db) {
   console.log('CONNECTION ERROR', err);
 });
 
+
+
 //Mongo DB Schema
 var Schema = mongoose.Schema;
 
